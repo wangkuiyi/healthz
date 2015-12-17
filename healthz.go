@@ -13,8 +13,8 @@ func init() {
 	})
 }
 
-func OK(addr string, timeout int) error {
-	client := &http.Client{Timeout: time.Duration(timeout) * time.Second}
+func OK(addr string, timeout time.Duration) error {
+	client := &http.Client{Timeout: timeout}
 	resp, e := client.Get("http://" + addr + "/healthz")
 	if e != nil {
 		return e
