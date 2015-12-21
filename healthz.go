@@ -24,6 +24,7 @@ func OK(addr string, timeout time.Duration) error {
 		client := &http.Client{Timeout: left}
 		resp, e := client.Get("http://" + addr + "/healthz")
 		if e != nil {
+			time.Sleep(left / 2)
 			continue
 		}
 		defer resp.Body.Close()
